@@ -1,0 +1,40 @@
+
+spring:
+  datasource:
+#    url: jdbc:postgresql://34.116.248.182:5432/chatDB
+    username: postgres
+    password: 123
+#    driver-class-name: org.postgresql.Driver
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    defer-datasource-initialization: true # allows hibernate ddl auto and spring init sql to work together
+#    show-sql: true
+#    properties:
+#      hibernate:
+#        format_sql: true
+#    database: postgresql
+#    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  sql:
+    init:
+      continue-on-error: true
+      mode: always
+  cloud:
+    gcp:
+      sql:
+        database-name: chatDB
+        instance-connection-name: chat-app-396909:europe-central2:chat-auth
+
+client:
+  location:
+    url: https://chat-image-xvmaiuixca-lm.a.run.app
+logging:
+      level:
+        org.springframework: DEBUG
+
+jwt:
+  uri: /auth/**
+  header: Authorization
+  prefix: Bearer
+  expiration: 3000
+  secret: JwtSuperBigFuckYeahWhatElseToWriteOMGSecretKey

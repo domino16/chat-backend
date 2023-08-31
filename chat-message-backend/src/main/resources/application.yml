@@ -1,0 +1,46 @@
+spring:
+  datasource:
+#    url: jdbc:postgresql://localhost:5432/chatPostgresDB
+    username: postgres
+    password: 123
+#    driverClassName: org.postgresql.Driver
+  sql:
+    init:
+      mode: always # always validates spring init sql script db schema, even in not embedded DBs
+      continue-on-error: true
+  cloud:
+    gcp:
+      sql:
+        database-name: chatPostgresDB
+        instance-connection-name: chat-app-396909:europe-central2:chat-messages-service
+#  jpa:
+#    database: postgresql
+#    database-platform: org.hibernate.dialect.PostgreSQLDialect
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: true
+
+logging:
+  level:
+    org.springframework.web: DEBUG
+
+server:
+#  compression:
+#    enabled: true
+#    mime-types: application/json,application/xml,text/html,text/css,application/javascript
+  port: 8080
+
+client:
+  location:
+    url: https://chat-image-xvmaiuixca-lm.a.run.app/
+
+jwt:
+  uri: /auth/**
+  header: Authorization
+  prefix: Bearer
+  expiration: 300
+  secret: JwtSuperBigFuckYeahWhatElseToWriteOMGSecretKey
+
+socket-server:
+  port: 8085
+
